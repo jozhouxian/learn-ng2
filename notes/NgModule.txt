@@ -1,0 +1,29 @@
+
+@NgModule({
+  providers?: Provider[]
+  declarations?: Array<Type<any> | any[]>
+  imports?: Array<Type<any> | ModuleWithProviders | any[]>
+  exports?: Array<Type<any> | any[]>
+  entryComponents?: Array<Type<any> | any[]>
+  bootstrap?: Array<Type<any> | any[]>
+  schemas?: Array<SchemaMetadata | any[]>
+  id?: string
+})
+
+declarations:
+Specifies a list of directives/pipes that belong to this module.
+
+imports:
+Specifies a list of modules whoses exported directives/pipes should be availabel to templates in this module
+
+exports:
+Specifies a list of directives/pips that can be used within the templates of component that is part of angular
+module that imports this angular module
+
+entryComponents:
+Specifies a list of components that should be compiled when this module is defined
+For each component listed here, angular will create a ComponentFactory and store it in the ComponentFactoryResolver
+
+bootstrap:
+Defines the component that should bootstraped when the this module is bootstraped
+The components liste here will automatically be added to entryComponents

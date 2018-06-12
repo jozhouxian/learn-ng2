@@ -1,0 +1,26 @@
+import ViewChild AfterViewInit from @angular/core
+
+@ContentChild(relatedComponent) remember: relatedComponent;
+
+one
+  three ways to change module in child view because the angular's two times detection rule
+  method 1
+    set module in ngAfterContentInit
+
+  mehtod 2
+    use setTimeout to change module in ngAfterViewInit
+
+  method 3
+    import ChangeDetectorRef from @angular/core
+    constructor ref in constructor function
+    after changing module in ngAfterViewInit use the ref's detectChanges function
+    (if use ViewChildren this mehtod is preferred)
+
+two
+  change element attribute by importing ElementRef and ViewChild from @angular/core
+  @ViewChild('ElementRef') element: ElementRef;
+  use element's setAttribute function to change attribute
+    ex:
+      this.email.nativeElement.setAttribute('placeholder', 'Enter your email address');
+      this.email.nativeElement.classList.add('email');
+      this.email.nativeElement.focus();
