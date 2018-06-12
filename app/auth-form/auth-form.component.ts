@@ -1,4 +1,4 @@
-import {Component, EventEmitter, ElementRef, Output, ViewChild, AfterViewInit, ContentChild, AfterContentInit, ChangeDetectorRef} from '@angular/core';
+import {Component, Renderer, EventEmitter, ElementRef, Output, ViewChild, AfterViewInit, ContentChild, AfterContentInit, ChangeDetectorRef} from '@angular/core';
 
 import {AuthRememberComponent} from './auth-remember.component';
 import {AuthMessageComponent} from './auth-message.component';
@@ -16,7 +16,10 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit{
 
   showMessage: boolean;
 
-  constructor(private ref: ChangeDetectorRef){
+  constructor(
+    private ref: ChangeDetectorRef,
+    private renderer: Renderer
+  ){
     this.showMessage = false;
   }
 
@@ -38,9 +41,16 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit{
     //   ()=>this.messageView.loggedDays = 30
     // )
 
-    this.email.nativeElement.setAttribute('placeholder', 'please enter email address');
-    this.email.nativeElement.classList.add('email');
-    this.email.nativeElement.focus();
+    // method 1 use nativeElement
+    // this.email.nativeElement.setAttribute('placeholder', 'please enter email address');
+    // this.email.nativeElement.classList.add('email');
+    // this.email.nativeElement.focus();
+
+    // method 2 use renderer recommended
+    this.renderer.setElementAttribute(this.email.nativeElement,'placeholder','pls enter email address');
+    this.renderer.setElementClass(this.email.nativeElement,'email',true);
+    this.renderer.invokeElementMethod(this.email.nativeElement,'focus');
+
   }
 
   ngAfterContentInit(){
