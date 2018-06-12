@@ -1,3 +1,14 @@
+description
+You can use ViewChild to get the first element or directive matching the selector from the view DOM.
+If the DOM changes, and a new child matches the selector, the   property will be updated.
+
+View queries are set before the NgAfterViewInit callback is called
+
+properties:
+  selector: the directive type or the name used for querying
+  read: read a different token from the queried element
+
+
 import ViewChild AfterViewInit from @angular/core
 
 @ContentChild(relatedComponent) remember: relatedComponent;
