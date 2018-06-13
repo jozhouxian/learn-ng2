@@ -15,13 +15,15 @@ import {User} from './auth-form.interface';
 export class AuthFormComponent implements AfterContentInit, AfterViewInit{
 
   showMessage: boolean;
+  title: string;
 
   constructor(
     private ref: ChangeDetectorRef,
     private renderer: Renderer
   ){
     this.showMessage = false;
-  }
+    this.title = 'Login';
+  };
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
 

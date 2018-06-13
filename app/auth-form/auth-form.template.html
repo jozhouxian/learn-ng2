@@ -1,6 +1,7 @@
 <div>
   <form #form="ngForm" (ngSubmit)="onsubmit(form.value)">
-    <ng-content select="h3"></ng-content>
+    <!-- <ng-content select="h3"></ng-content> -->
+    <h3>{{title}}</h3>
     <label>
       Email Address:
       <input type="email" name="email" ngModel #emailRef>
@@ -13,6 +14,7 @@
     <auth-message
       [style.display]="showMessage ? 'inherit' : 'none'">
     </auth-message>
-    <ng-content select="button"></ng-content>
+    <button type="submit">{{title}}</button>
+    <!-- <ng-content select="button"></ng-content> -->
   </form>
 </div>
