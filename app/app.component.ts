@@ -40,6 +40,17 @@ import { User } from './auth-form/auth-form.interface';
             credit-card=""
           >
         </label>
+        <label
+          tooltip="3 digital numbers"
+          #myTooltip="tooltipp"
+        >
+          Enter Your Security Code
+          <span
+            (mouseover)="myTooltip.show()"
+            (mouseout)="myTooltip.hide()"
+          >(?)</span>
+          <input type="text">
+        </label>
       </form>
     </div>
   `

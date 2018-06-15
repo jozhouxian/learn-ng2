@@ -56,7 +56,6 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit{
   }
 
   ngAfterContentInit(){
-    console.log(this.remember);
     if(this.remember){
       this.remember.checked.subscribe((isChecked:boolean) => {
         this.showMessage = isChecked;
