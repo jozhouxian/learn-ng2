@@ -17,14 +17,30 @@ import { User } from './auth-form/auth-form.interface';
 
       <!-- dynamic component -->
       <div #entry></div>
+      <!--two method to create embededView one-->
+      <template #tmp let-name let-id="id">
+        <p>{{name}} / {{id}}</p>
+      </template>
+      <!--two method to create embededView two-->
       <ng-container
         [ngTemplateOutlet]="tmp"
         [ngTemplateOutletContext]="tmpOutletCtx">
       </ng-container>
-
-      <template #tmp let-name let-id="id">
-        <p>{{name}} / {{id}}</p>
-      </template>
+    </div>
+    
+    <div class="app">
+      <form>
+        <h3>Custom Directive</h3>
+        <label>
+          Credit Card Number
+          <input
+            type="text"
+            name="credit-card"
+            placeholder="pls enter credit-number"
+            credit-card=""
+          >
+        </label>
+      </form>
     </div>
   `
 })
@@ -43,8 +59,8 @@ export class AppComponent implements AfterContentInit {
   constructor(private resolver: ComponentFactoryResolver) { }
 
   ngAfterContentInit() {
-    const autoFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
-    this.component = this.entry.createComponent(autoFormFactory);
+    const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
+    this.component = this.entry.createComponent(authFormFactory);
 
     // change variable in dynamic component
     this.component.instance.title = 'Dynamic login';

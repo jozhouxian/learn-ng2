@@ -14,7 +14,7 @@ declarations:
 Specifies a list of directives/pipes that belong to this module.
 
 imports:
-Specifies a list of modules whoses exported directives/pipes should be availabel to templates in this module
+Specifies a list of modules whose exported directives/pipes should be available to templates in this module
 
 exports:
 Specifies a list of directives/pips that can be used within the templates of component that is part of angular

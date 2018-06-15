@@ -1,0 +1,25 @@
+obviously you need to have a component first
+in parent or root component we have to create a container to put the dynamic created component
+(we are also using # the hash symbol to declare a reference variable to the container)
+
+
+Now we need to get a reference to our dynamic component element in the parent or root component,
+by ViewChild decorator, and that decorator also take a local variable as a parameter.
+(the default return from ViewChild decorator is the component instance or the DOM element(templateRef), but in
+our case we need to get the element as ViewContainerRef--is a reference to the container and also exposes
+an API to create component)
+
+Before we proceed to the createComponent method we need to add one more service
+  import ComponentFactoryResolver from angular/core and use it as an argument in the constructor,
+   this service exposes one primary method resolveComponentFactory which takes a component as parameter and returns
+   a ComponentFactory--is an object knows how to creates component.
+
+component: ComponentRef<AuthFormComponent>;
+@ViewChild('entry', { read: ViewContainerRef }) entry: ViewContainerRef;
+constructor(private resolver: ComponentFactoryResolver) { }
+const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
+this.component = this.entry.createComponent(authFormFactory);
+
+
+Next,
+we can change the variables or modules in the dynamic component by the ComponentRef's instance
