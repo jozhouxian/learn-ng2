@@ -7,6 +7,8 @@ import {AuthFormModule} from './auth-form/auth-form.module';
 import {CreditCardDirective} from './credit-card/credit-card.directive';
 import {TooltipDirective} from "./tooltip/tooltip.directive";
 
+import {FilesizePipe} from "./filter/filesize.pipe";
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -18,7 +20,8 @@ import {TooltipDirective} from "./tooltip/tooltip.directive";
   declarations: [
     AppComponent,
     CreditCardDirective,
-    TooltipDirective
+    TooltipDirective,
+    FilesizePipe
   ]
 })
 export class AppModule {

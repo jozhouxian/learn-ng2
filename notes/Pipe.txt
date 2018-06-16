@@ -1,0 +1,30 @@
+Pipe {
+  name: string, //Name of the pipe
+  pure: boolean //if the pipe is pure, its output depends on its input
+}
+
+use @Pipe annotation to declare that a given class is a pipe
+a pipe class must implement the PipeTransform interface
+to use the pipe include a reference to the pipe class in the NgModule.declarations
+
+
+Use the pipe
+method one
+  directly using the pipe after the pipe symbol |
+    <small>{{item.size | filesize : 'M'}}</small>
+
+    import {Pipe,PipeTransform} from "@angular/core";
+    @Pipe({
+      name: 'filesize'
+    })
+    export class FilesizePipe implements PipeTransform{
+      transform(size:number, extension: string = 'MB'){
+        console.log(size,extension);
+      }
+    }
+
+method two
+  import pipe from the customized file, and define pipe in component constructor arguments list
+  injecting the pipe by providers in component
+  use pipe's transform method to ...
+
